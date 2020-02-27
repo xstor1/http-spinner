@@ -1,0 +1,26 @@
+{
+  "name": "http-spinner",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xstor1/http-spinner.git"
+  },
+  "keywords": [
+    "spinner",
+    "http",
+    "request",
+    "material"
+  ],
+  "author": "Vojtěch Štor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xstor1/http-spinner/issues"
+  },
+  "homepage": "https://github.com/xstor1/http-spinner#readme",
+  "peerDependencies": {
+    "@angular/common": "^9.0.2",
+    "@angular/core": "^9.0.2",
+    "tslib": "^1.10.0",
+    "@angular/material": "^9.1.0"
+  }
+}
