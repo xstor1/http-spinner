@@ -8,10 +8,20 @@ import {HttpProgressState, HttpSpinnerService, IHttpState} from './http-spinner.
       <div *ngIf="loading" class="loading">
         <mat-spinner></mat-spinner>
       </div>
-      <ng-container></ng-container>
+      <ng-content></ng-content>
     </div>
   `,
-  styles: ['.loading-container { position: relative;}']
+  styles: ['.loading-container { position: relative;}  .loading {\n' +
+  '  position: absolute;\n' +
+  '  top: 0;\n' +
+  '  left: 0;\n' +
+  '  bottom: 0;\n' +
+  '  right: 0;\n' +
+  '  z-index: 1;\n' +
+  '  display: flex;\n' +
+  '  align-items: center;\n' +
+  '  justify-content: center;\n' +
+  '}\n']
 })
 export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
   public loading = false;
