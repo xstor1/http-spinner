@@ -1,5 +1,6 @@
 import {AfterViewChecked, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewRef} from '@angular/core';
 import {HttpProgressState, HttpSpinnerService, IHttpState} from './http-spinner.service';
+import {Subscription} from 'rxjs';
 
 // @ts-ignore
 @Component({
@@ -62,7 +63,7 @@ import {HttpProgressState, HttpSpinnerService, IHttpState} from './http-spinner.
 })
 export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
   public loading = false;
-  public subs;
+  public subs?: Subscription;
   @Input()
   public customLoading = true;
   @Input() public filterBy: string | Array<string> | null = null;
