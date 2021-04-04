@@ -1,24 +1,27 @@
 # HttpSpinner
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+This library is used for displaying loading spinner when http calls begins.
 
-## Code scaffolding
-
-Run `ng generate component component-name --project http-spinner` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project http-spinner`.
-> Note: Don't forget to add `--project http-spinner` or else it will be added to the default project in your `angular.json` file. 
-
-## Build
-
-Run `ng build http-spinner` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build http-spinner`, go to the dist folder `cd dist/http-spinner` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test http-spinner` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## How to use
+### Registration to module
+It is so simple to use, just register `HttpSpinnerModule` to imports.
+After that add this: 
+`  {
+provide: HTTP_INTERCEPTORS,
+useClass: InterceptorService,
+multi: true
+}`
+to providers and all configuration is done.
+### Specify place where you want to have a loading spinner
+Now the magic will happen. Choose place where you want to have a spinner and that place wrap with this components:
+`<http-spinner>`
+Something like that: `<http-spinner><my-custom-components></my-custom-components></http-spinner>`
+#### Inputs
+The component has 2 inputs: 
+####customLoading
+Custom loading is simple bool value by default TRUE. And it activate my custom loading bar. (In future you will define your custom loading svg)
+If you choose FALSE it will you mat-spinner from angular material library.
+####filterBy
+Filter by is string or array of strings where you can type part of URL's and the spinner will react only to urls which includes your strings. 
+###Demo
+Demo is not done yet! If you have a time do it yourself and contact me i will provide it here
