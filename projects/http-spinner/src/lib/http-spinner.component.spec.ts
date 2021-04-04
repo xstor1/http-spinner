@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { HttpSpinnerComponent } from './http-spinner.component';
 
@@ -6,7 +6,7 @@ describe('HttpSpinnerComponent', () => {
   let component: HttpSpinnerComponent;
   let fixture: ComponentFixture<HttpSpinnerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ HttpSpinnerComponent ]
     })
