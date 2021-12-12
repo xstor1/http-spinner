@@ -2,7 +2,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {HttpProgressState, HttpSpinnerService} from './http-spinner.service';
 import {Observable} from 'rxjs';
 import {finalize, tap} from 'rxjs/operators';
-import {forwardRef, Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -39,12 +39,21 @@ export class InterceptorService implements HttpInterceptor {
       url: request.url,
       state: HttpProgressState.start
     });
+    this.httpStateService.states.push({
+      url: request.url,
+      state: HttpProgressState.start
+    });
 
     return next.handle(request).pipe(finalize(() => {
       this.httpStateService.state.next({
         url: request.url,
         state: HttpProgressState.end
       });
+      this.httpStateService.states.push({
+        url: request.url,
+        state: HttpProgressState.end
+      });
+
     }));
   }
 }
