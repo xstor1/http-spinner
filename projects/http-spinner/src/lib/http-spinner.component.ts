@@ -6,8 +6,8 @@ import {Subscription} from 'rxjs';
 @Component({
   selector: 'http-spinner',
   template: `
-    <div class="loading-container">
-      <div *ngIf="loading" class="loading">
+    <div *ngIf="loading" class="loading-container">
+      <div  class="loading">
         <div *ngIf="customLoading" class="relative">
           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
                viewBox="0 0 173.87 96.19">
