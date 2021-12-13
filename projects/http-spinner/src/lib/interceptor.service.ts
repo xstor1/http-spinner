@@ -49,10 +49,7 @@ export class InterceptorService implements HttpInterceptor {
         url: request.url,
         state: HttpProgressState.end
       });
-      this.httpStateService.states.push({
-        url: request.url,
-        state: HttpProgressState.end
-      });
+      this.httpStateService.states = this.httpStateService.states.filter(y => y.url !== request.url);
 
     }));
   }

@@ -91,13 +91,7 @@ export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
           });
         } else {
           if (!this.filterBy) {
-            const allWithStart = this.httpStateService.states.filter(y => y.state === HttpProgressState.start);
-            for (const iHttpState of allWithStart) {
-              this.loading = this.httpStateService.states.filter(y => y.url === iHttpState.url && y.state === HttpProgressState.end).length === 0;
-              if (this.loading) {
-                break;
-              }
-            }
+            this.loading = this.httpStateService.states.filter(y => y.state === HttpProgressState.start).length > 0;
             if (this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
               this.changeDetector.detectChanges();
             }
