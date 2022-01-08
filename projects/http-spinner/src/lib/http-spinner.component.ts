@@ -82,7 +82,7 @@ export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
               if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
                 oldThis.changeDetector.detectChanges();
               }
-            } else if (progress.url.indexOf(item) !== -1) {
+            } else if (progress.url.indexOf(item) === -1) {
               oldThis.loading = (progress.state === HttpProgressState.start);
               if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
                 oldThis.changeDetector.detectChanges();
@@ -95,7 +95,7 @@ export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
             if (this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
               this.changeDetector.detectChanges();
             }
-          } else if (progress.url.indexOf(this.filterBy) !== -1) {
+          } else if (progress.url.indexOf(this.filterBy) === -1) {
             this.loading = (progress.state === HttpProgressState.start);
             if (this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
               this.changeDetector.detectChanges();
