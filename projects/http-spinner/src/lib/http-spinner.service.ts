@@ -5,7 +5,7 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class HttpSpinnerService {
-
+  public states: IHttpState[] = [];
   public state = new BehaviorSubject<IHttpState>({} as IHttpState);
 
   constructor() {

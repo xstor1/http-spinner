@@ -1,4 +1,4 @@
-import {AfterViewChecked, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewRef} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, Input, OnDestroy, ViewRef} from '@angular/core';
 import {HttpProgressState, HttpSpinnerService, IHttpState} from './http-spinner.service';
 import {Subscription} from 'rxjs';
 
@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs';
   selector: 'http-spinner',
   template: `
     <div *ngIf="loading" class="loading-container">
-      <div  class="loading">
+      <div class="loading">
         <div *ngIf="customLoading" class="relative">
           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
                viewBox="0 0 173.87 96.19">
@@ -82,7 +82,7 @@ export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
               if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
                 oldThis.changeDetector.detectChanges();
               }
-            } else if (progress.url.indexOf(item) !== -1) {
+            } else if (!progress.url.includes(item)) {
               oldThis.loading = (progress.state === HttpProgressState.start);
               if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
                 oldThis.changeDetector.detectChanges();
@@ -91,11 +91,11 @@ export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
           });
         } else {
           if (!this.filterBy) {
-            this.loading = (progress.state === HttpProgressState.start);
+            this.loading = this.httpStateService.states.filter(y => y.state === HttpProgressState.start).length > 0;
             if (this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
               this.changeDetector.detectChanges();
             }
-          } else if (progress.url.indexOf(this.filterBy) !== -1) {
+          } else if (progress.url.indexOf(this.filterBy) === -1) {
             this.loading = (progress.state === HttpProgressState.start);
             if (this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
               this.changeDetector.detectChanges();
