@@ -81,9 +81,9 @@ export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
             if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
               oldThis.changeDetector.detectChanges();
             }
-          } else if (!this.filterBy.some((y) => {
-            progress.url.includes(y);
-          })) {
+          } else if (!this.filterBy.some((y) =>
+            progress.url.includes(y)
+          )) {
             oldThis.loading = (progress.state === HttpProgressState.start);
             if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
               oldThis.changeDetector.detectChanges();
