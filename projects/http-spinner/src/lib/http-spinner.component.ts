@@ -76,19 +76,19 @@ export class HttpSpinnerComponent implements AfterViewChecked, OnDestroy {
       if (progress && progress.url) {
         if (Array.isArray(this.filterBy)) {
           const oldThis = this;
-          this.filterBy.forEach(item => {
-            if (!item) {
-              oldThis.loading = (progress.state === HttpProgressState.start);
-              if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
-                oldThis.changeDetector.detectChanges();
-              }
-            } else if (!progress.url.includes(item)) {
-              oldThis.loading = (progress.state === HttpProgressState.start);
-              if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
-                oldThis.changeDetector.detectChanges();
-              }
+          if (this.filterBy.length <= 0) {
+            oldThis.loading = (progress.state === HttpProgressState.start);
+            if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
+              oldThis.changeDetector.detectChanges();
             }
-          });
+          } else if (!this.filterBy.some((y) => {
+            progress.url.includes(y);
+          })) {
+            oldThis.loading = (progress.state === HttpProgressState.start);
+            if (oldThis.changeDetector && !(oldThis.changeDetector as ViewRef).destroyed) {
+              oldThis.changeDetector.detectChanges();
+            }
+          }
         } else {
           if (!this.filterBy) {
             this.loading = this.httpStateService.states.filter(y => y.state === HttpProgressState.start).length > 0;
