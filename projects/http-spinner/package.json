@@ -1,6 +1,6 @@
 {
   "name": "http-spinner",
-  "version": "13.0.7",
+  "version": "14.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xstor1/http-spinner.git"
@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/xstor1/http-spinner#readme",
   "peerDependencies": {
-    "@angular/common": "^13.2.0",
-    "@angular/core": "^13.2.0",
-    "tslib": "^1.14.1",
-    "@angular/material": "^13.2.0"
+    "@angular/common": "^14.2.7",
+    "@angular/core": "^14.2.7",
+    "tslib": "^2.3.0",
+    "@angular/material": "^14.2.5"
   }
 }
